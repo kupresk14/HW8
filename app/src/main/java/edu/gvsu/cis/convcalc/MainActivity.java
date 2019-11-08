@@ -11,6 +11,7 @@ package edu.gvsu.cis.convcalc;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.TextView;
+        import android.util.Log;
 
         import org.joda.time.DateTime;
 
@@ -20,7 +21,7 @@ package edu.gvsu.cis.convcalc;
 public class MainActivity extends AppCompatActivity {
 
     public static int SETTINGS_RESULT = 1;
-    public static int HISTORY_RESULT = 1;
+    public static int HISTORY_RESULT = 2;
 
     private enum Mode {Length, Volume};
 
@@ -196,11 +197,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == SETTINGS_RESULT) {
-            System.out.println("Works");
+            Log.i("Works", "Settings_Result");
             this.fromUnits.setText(data.getStringExtra("fromUnits"));
             this.toUnits.setText(data.getStringExtra("toUnits"));
         } else if (resultCode == HISTORY_RESULT) {
-            System.out.println("Works");
+            Log.i("Works", "History_Result");
             String[] vals = data.getStringArrayExtra("item");
             this.fromField.setText(vals[0]);
             this.toField.setText(vals[1]);
